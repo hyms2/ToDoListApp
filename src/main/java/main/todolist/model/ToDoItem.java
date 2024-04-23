@@ -10,14 +10,14 @@ public class ToDoItem {
     private String description;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private BooleanProperty completed; // Define completed property
+    private BooleanProperty completed;
 
     public ToDoItem(String name, String description, LocalDate dateFrom, LocalDate dateTo) {
         this.name = name;
         this.description = description;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        this.completed = new SimpleBooleanProperty(false); // Initialize completed property
+        this.completed = new SimpleBooleanProperty(false);
     }
 
     public Long getId() {
@@ -69,10 +69,5 @@ public class ToDoItem {
     }
     public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
-    }
-
-    // Method to check if the id is not null
-    public boolean hasId() {
-        return id != null;
     }
 }

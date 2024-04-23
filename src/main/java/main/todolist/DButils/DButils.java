@@ -14,7 +14,6 @@ public class DButils {
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             String query = "INSERT INTO todo_items (name, description, date_from, date_to) VALUES (?, ?, ?, ?)";
             if (item.getId() != null) {
-                // If item has an ID, update the existing record
                 query = "UPDATE todo_items SET name=?, description=?, date_from=?, date_to=? WHERE id=?";
             }
 

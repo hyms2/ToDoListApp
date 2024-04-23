@@ -55,8 +55,8 @@ public class AddToDoController {
         } else {
             ToDoItem newItem = new ToDoItem(name, description, dateFrom, dateTo);
             DButils.insertToDoItem(newItem);
-            mainController.receiveToDoItem(newItem); // Pass the new item to the MainController
-            ((Stage) button_addToDo.getScene().getWindow()).close(); // Close the window
+            mainController.receiveToDoItem(newItem);
+            ((Stage) button_addToDo.getScene().getWindow()).close();
         }
     }
 

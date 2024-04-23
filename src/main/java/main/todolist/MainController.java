@@ -48,12 +48,11 @@ public class MainController {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait(); // Show the dialog and wait for it to close
+            stage.showAndWait();
 
-            // After the dialog is closed, retrieve the new item from AddToDoController
             ToDoItem newItem = addToDoController.getNewItem();
             if (newItem != null) {
-                receiveToDoItem(newItem); // Add the new item to the list
+                receiveToDoItem(newItem);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,30 +71,22 @@ public class MainController {
         ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
-                // Load the ToDoDetail pop-up window FXML
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("todoDetail.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
 
-                // Get the controller
                 ToDoDetailController detailController = fxmlLoader.getController();
 
-                // Pass the selected ToDoItem and the listview_ToDoList to the controller
                 detailController.initialize(selectedItem);
 
-                // Create a new stage for the pop-up window
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-
-                // Set the pop-up window as modal (blocks interaction with other windows)
                 stage.initModality(Modality.APPLICATION_MODAL);
-
-                // Show the pop-up window
                 stage.showAndWait();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert if no ToDoItem is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No ToDoItem Selected");
             alert.setHeaderText(null);
@@ -106,24 +97,18 @@ public class MainController {
 
     @FXML
     public void removeToDoBuilder(ActionEvent event) {
-        // Get the currently selected tab
         Tab selectedTab = tab_ongoing.isSelected() ? tab_ongoing : tab_completed;
 
-        // Check which list view corresponds to the selected tab and remove the selected item
         if (selectedTab == tab_ongoing) {
             ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 listview_ToDoList.getItems().remove(selectedItem);
-
-                // Remove the item from the database
                 DButils.deleteToDoItem(selectedItem);
             }
         } else if (selectedTab == tab_completed) {
             ToDoItem selectedItem = listview_TDCompleted.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 listview_TDCompleted.getItems().remove(selectedItem);
-
-                // Remove the item from the database
                 DButils.deleteToDoItem(selectedItem);
             }
         }
@@ -191,12 +176,4 @@ public class MainController {
             }
         });
     }
-
-    public void removeToDoItem(ToDoItem item) {
-        listview_ToDoList.getItems().remove(item);
-        listview_TDCompleted.getItems().remove(item);
-        // Optionally, remove the item from the database
-        DButils.deleteToDoItem(item);
-    }
-
 }

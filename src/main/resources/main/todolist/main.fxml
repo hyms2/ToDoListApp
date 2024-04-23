@@ -51,7 +51,12 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="button_removeToDo" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" text="-">
+                        <Button fx:id="button_removeToDo" layoutX="404.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" text="-">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="button_detailToDo1" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" text=":">
                            <font>
                               <Font size="14.0" />
                            </font>
