@@ -22,12 +22,17 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="button_addToDo" layoutX="118.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoBuilder" text="+">
+                        <Button fx:id="button_addToDo" layoutX="367.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoBuilder" text="+">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
                         <Button fx:id="button_detailToDo" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" text=":">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="button_removeToDo1" layoutX="404.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" text="-">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -46,12 +51,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="button_removeToDo" layoutX="118.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" text="-">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="button_detailToDo" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" text=":">
+                        <Button fx:id="button_removeToDo" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" text="-">
                            <font>
                               <Font size="14.0" />
                            </font>

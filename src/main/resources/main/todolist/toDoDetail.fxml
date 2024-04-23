@@ -34,7 +34,6 @@
          </font>
       </Label>
       <DatePicker fx:id="date_to" layoutX="89.0" layoutY="311.0" />
-      <Button fx:id="button_save" layoutX="86.0" layoutY="360.0" mnemonicParsing="false" onAction="#saveToDo" text="SAVE" />
-      <Button fx:id="button_delete" layoutX="137.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteToDo" text="DELETE" />
+      <Button fx:id="button_save" layoutX="117.0" layoutY="360.0" mnemonicParsing="false" onAction="#saveToDo" text="SAVE" />
    </children>
 </AnchorPane>

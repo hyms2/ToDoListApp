@@ -61,7 +61,6 @@ public class MainController {
     }
 
 
-
     @FXML
     public void receiveToDoItem(ToDoItem item) {
         listview_ToDoList.getItems().add(item);

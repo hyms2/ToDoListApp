@@ -11,13 +11,9 @@ import main.todolist.DButils.DButils;
 public class ToDoDetailController {
 
     private ToDoItem toDoItem;
-    private MainController mainController;
 
     @FXML
     private Button button_save;
-
-    @FXML
-    private Button button_delete;
 
     @FXML
     private DatePicker date_from;
@@ -40,10 +36,6 @@ public class ToDoDetailController {
         date_to.setValue(item.getDateTo());
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-
     @FXML
     void saveToDo(ActionEvent event) {
         // Update ToDoItem with edited details
@@ -58,15 +50,4 @@ public class ToDoDetailController {
         Stage stage = (Stage) button_save.getScene().getWindow();
         stage.close();
     }
-
-    @FXML
-    void deleteToDo() {
-        // Handle the deletion of the selected ToDoItem
-        if (mainController != null && toDoItem != null) {
-            mainController.removeToDoItem(toDoItem);
-        }
-        Stage stage = (Stage) button_delete.getScene().getWindow();
-        stage.close();
-    }
-
 }
