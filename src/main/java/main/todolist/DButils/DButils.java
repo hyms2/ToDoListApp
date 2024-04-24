@@ -11,13 +11,32 @@ public class DButils {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "hazim1234";
 
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
+
+    private static void closeResources(Connection conn, Statement statement, ResultSet resultSet) {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static long insertToDoItem(ToDoItem item) {
         long generatedId = -1;
 
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "INSERT INTO todo_items (name, description, date_from, date_to, iscomplete) VALUES (?, ?, ?, ?, ?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
+        try (Connection conn = getConnection();
+             PreparedStatement statement = conn.prepareStatement("INSERT INTO todo_items (name, description, date_from, date_to, iscomplete) VALUES (?, ?, ?, ?, ?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setString(2, item.getDescription());
             statement.setDate(3, java.sql.Date.valueOf(item.getDateFrom()));
@@ -30,103 +49,85 @@ public class DButils {
                 throw new SQLException("Inserting todo item failed, no rows affected.");
             }
 
-            try (Statement lastInsertId = conn.createStatement()){
-                ResultSet resultSet = lastInsertId.executeQuery("SELECT LAST_INSERT_ID()");
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
                 if (resultSet.next()) {
                     generatedId = resultSet.getLong(1);
                 } else {
                     throw new SQLException("Inserting todo item failed, no ID obtained.");
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
-            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, null, null);
         }
 
         return generatedId;
     }
 
     public static void deleteToDoItem(ToDoItem item) {
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "DELETE FROM todo_items WHERE id=?";
-            PreparedStatement statement = conn.prepareStatement(query);
+        try (Connection conn = getConnection();
+             PreparedStatement statement = conn.prepareStatement("DELETE FROM todo_items WHERE id=?")) {
             statement.setLong(1, item.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, null, null);
         }
     }
 
     public static void completeStatus(long itemId, int isComplete) {
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "UPDATE todo_items SET iscomplete = ? WHERE id = ?";
-            PreparedStatement statement = conn.prepareStatement(query);
+        try (Connection conn = getConnection();
+             PreparedStatement statement = conn.prepareStatement("UPDATE todo_items SET iscomplete = ? WHERE id = ?")) {
             statement.setInt(1, isComplete);
             statement.setLong(2, itemId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, null, null);
         }
+    }
+
+    private static List<ToDoItem> getToDoItems(String query) {
+        List<ToDoItem> toDoItems = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                LocalDate dateFrom = resultSet.getDate("date_from").toLocalDate();
+                LocalDate dateTo = resultSet.getDate("date_to").toLocalDate();
+
+                ToDoItem item = new ToDoItem(name, description, dateFrom, dateTo);
+                item.setId(id);
+
+                toDoItems.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeResources(null, null, null);
+        }
+
+        return toDoItems;
     }
 
     public static List<ToDoItem> getIncompleteToDoItems() {
-        List<ToDoItem> toDoItems = new ArrayList<>();
-
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "SELECT * FROM todo_items WHERE iscomplete = 0";
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                Long id = resultSet.getLong("id");
-                String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                LocalDate dateFrom = resultSet.getDate("date_from").toLocalDate();
-                LocalDate dateTo = resultSet.getDate("date_to").toLocalDate();
-
-                ToDoItem item = new ToDoItem(name, description, dateFrom, dateTo);
-                item.setId(id);
-
-                toDoItems.add(item);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return toDoItems;
+        return getToDoItems("SELECT * FROM todo_items WHERE iscomplete = 0");
     }
 
-    public static List<ToDoItem> getcompleteToDoItems() {
-        List<ToDoItem> toDoItems = new ArrayList<>();
-
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "SELECT * FROM todo_items WHERE iscomplete = 1";
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                Long id = resultSet.getLong("id");
-                String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                LocalDate dateFrom = resultSet.getDate("date_from").toLocalDate();
-                LocalDate dateTo = resultSet.getDate("date_to").toLocalDate();
-
-                ToDoItem item = new ToDoItem(name, description, dateFrom, dateTo);
-                item.setId(id);
-                toDoItems.add(item);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return toDoItems;
+    public static List<ToDoItem> getCompleteToDoItems() {
+        return getToDoItems("SELECT * FROM todo_items WHERE iscomplete = 1");
     }
 
     public static void updateToDoItem(ToDoItem item) {
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            String query = "UPDATE todo_items SET name=?, description=?, date_from=?, date_to=? WHERE id=?";
-            PreparedStatement statement = conn.prepareStatement(query);
+        try (Connection conn = getConnection();
+             PreparedStatement statement = conn.prepareStatement("UPDATE todo_items SET name=?, description=?, date_from=?, date_to=? WHERE id=?")) {
             statement.setString(1, item.getName());
             statement.setString(2, item.getDescription());
             statement.setDate(3, java.sql.Date.valueOf(item.getDateFrom()));
@@ -140,6 +141,8 @@ public class DButils {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, null, null);
         }
     }
 }

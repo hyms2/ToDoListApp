@@ -118,9 +118,9 @@ public class MainController {
 
 
     public void initialize() {
-        List<ToDoItem> ongoinToDoItems = DButils.getIncompleteToDoItems();
-        List<ToDoItem> completeToDoItems = DButils.getcompleteToDoItems();
-        listview_ToDoList.getItems().addAll(ongoinToDoItems);
+        List<ToDoItem> ongoingToDoItems = DButils.getIncompleteToDoItems();
+        List<ToDoItem> completeToDoItems = DButils.getCompleteToDoItems();
+        listview_ToDoList.getItems().addAll(ongoingToDoItems);
         listview_TDCompleted.getItems().addAll(completeToDoItems);
 
         listview_ToDoList.setCellFactory(new Callback<>() {
