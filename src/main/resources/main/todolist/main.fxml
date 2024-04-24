@@ -19,22 +19,22 @@
                         <ListView fx:id="listview_ToDoList" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
                         <Label layoutX="23.0" layoutY="23.0" text="To Do List">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Monospaced Bold" size="18.0" />
                            </font>
                         </Label>
                         <Button fx:id="button_addToDo" layoutX="367.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoBuilder" style="-fx-background-color: #4287f5;" text="+" textFill="WHITE">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
                         <Button fx:id="button_detailToDo" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" style="-fx-background-color: #4287f5;" text=":" textFill="WHITE">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
                         <Button fx:id="button_removeToDo1" layoutX="404.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
                      </children>
@@ -48,12 +48,12 @@
                         <ListView fx:id="listview_TDCompleted" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
                         <Label layoutX="23.0" layoutY="23.0" text="To Do List">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Monospaced Bold" size="18.0" />
                            </font>
                         </Label>
                         <Button fx:id="button_removeToDo" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
                      </children></AnchorPane>
