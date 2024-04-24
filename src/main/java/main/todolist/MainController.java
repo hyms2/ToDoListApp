@@ -13,7 +13,6 @@ import main.todolist.model.ToDoItem;
 import java.time.format.DateTimeFormatter;
 import javafx.util.Callback;
 import main.todolist.sceneController.AddToDoController;
-import main.todolist.sceneController.SceneController;
 import main.todolist.sceneController.ToDoDetailController;
 
 import java.io.IOException;
@@ -62,7 +61,6 @@ public class MainController {
         }
     }
 
-
     @FXML
     public void receiveToDoItem(ToDoItem item) {
         listview_ToDoList.getItems().add(item);
@@ -74,7 +72,7 @@ public class MainController {
         ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("todoDetail.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toDoDetail.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
 
                 ToDoDetailController detailController = fxmlLoader.getController();
