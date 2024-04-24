@@ -2,27 +2,16 @@ package main.todolist.sceneController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.todolist.DButils.DButils;
 import main.todolist.MainController;
 import main.todolist.model.ToDoItem;
-
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class AddToDoController {
-
     private MainController mainController;
-
     private ToDoItem newItem;
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
 
     @FXML
     private Button button_addToDo;
@@ -62,5 +51,8 @@ public class AddToDoController {
 
     public ToDoItem getNewItem() {
         return newItem;
+    }
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

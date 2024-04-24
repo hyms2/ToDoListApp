@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import main.todolist.MainController;
 import main.todolist.model.ToDoItem;
 import main.todolist.DButils.DButils;
 
@@ -42,6 +41,7 @@ public class ToDoDetailController {
         toDoItem.setDescription(field_toDoDesc.getText());
         toDoItem.setDateFrom(date_from.getValue());
         toDoItem.setDateTo(date_to.getValue());
+        DButils.updateToDoItem(toDoItem);
 
         Stage stage = (Stage) button_save.getScene().getWindow();
         stage.close();

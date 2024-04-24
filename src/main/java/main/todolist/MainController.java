@@ -16,6 +16,7 @@ import main.todolist.sceneController.AddToDoController;
 import main.todolist.sceneController.ToDoDetailController;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainController {
 
@@ -117,6 +118,11 @@ public class MainController {
 
 
     public void initialize() {
+        List<ToDoItem> ongoinToDoItems = DButils.getIncompleteToDoItems();
+        List<ToDoItem> completeToDoItems = DButils.getcompleteToDoItems();
+        listview_ToDoList.getItems().addAll(ongoinToDoItems);
+        listview_TDCompleted.getItems().addAll(completeToDoItems);
+
         listview_ToDoList.setCellFactory(new Callback<>() {
             @Override
             public ListCell<ToDoItem> call(ListView<ToDoItem> param) {
@@ -137,6 +143,7 @@ public class MainController {
                             checkBox.setOnAction(event -> {
                                 if (checkBox.isSelected()) {
                                     listview_TDCompleted.getItems().add(item);
+                                    DButils.completeStatus(item.getId(), 1);
                                     listview_ToDoList.getItems().remove(item);
                                 }
                             });
@@ -167,6 +174,7 @@ public class MainController {
                                 if (!checkBox.isSelected()) {
                                     // Move the item to the ongoing tab
                                     listview_ToDoList.getItems().add(item);
+                                    DButils.completeStatus(item.getId(), 0);
                                     listview_TDCompleted.getItems().remove(item);
                                 }
                             });

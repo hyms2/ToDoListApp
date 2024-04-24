@@ -23,41 +23,31 @@ public class ToDoItem {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    // Getter and setter methods for completed property
     public boolean isCompleted() {
         return completed.get();
     }
-
     public BooleanProperty completedProperty() {
         return completed;
     }
-
     public void setCompleted(boolean completed) {
         this.completed.set(completed);
     }
-
-    // Getter methods for other fields
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
-
     public LocalDate getDateFrom() {
         return dateFrom;
     }
-
     public LocalDate getDateTo() {
         return dateTo;
     }
-
     public void setName(String name) {
         this.name = name;
     }
