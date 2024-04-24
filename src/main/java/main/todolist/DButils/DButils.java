@@ -31,39 +31,40 @@ public class DButils {
         }
     }
 
-    public static long insertToDoItem(ToDoItem item) {
-        long generatedId = -1;
+public static long insertToDoItem(ToDoItem item) {
+    long generatedId = -1;
 
-        try (Connection conn = getConnection();
-             PreparedStatement statement = conn.prepareStatement("INSERT INTO todo_items (name, description, date_from, date_to, iscomplete) VALUES (?, ?, ?, ?, ?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, item.getName());
-            statement.setString(2, item.getDescription());
-            statement.setDate(3, java.sql.Date.valueOf(item.getDateFrom()));
-            statement.setDate(4, java.sql.Date.valueOf(item.getDateTo()));
-            statement.setInt(5, item.isCompleted() ? 1 : 0);
+    try (Connection conn = getConnection();
+         PreparedStatement statement = conn.prepareStatement("INSERT INTO todo_items (name, description, date_from, date_to, iscomplete) VALUES (?, ?, ?, ?, ?)",
+                 Statement.RETURN_GENERATED_KEYS)) {
+        statement.setString(1, item.getName());
+        statement.setString(2, item.getDescription());
+        statement.setDate(3, java.sql.Date.valueOf(item.getDateFrom()));
+        statement.setDate(4, java.sql.Date.valueOf(item.getDateTo()));
+        statement.setInt(5, item.isCompleted() ? 1 : 0);
 
-            int affectedRows = statement.executeUpdate();
+        int affectedRows = statement.executeUpdate();
 
-            if (affectedRows == 0) {
-                throw new SQLException("Inserting todo item failed, no rows affected.");
-            }
-
-            try (ResultSet resultSet = statement.getGeneratedKeys()) {
-                if (resultSet.next()) {
-                    generatedId = resultSet.getLong(1);
-                } else {
-                    throw new SQLException("Inserting todo item failed, no ID obtained.");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            closeResources(null, null, null);
+        if (affectedRows == 0) {
+            throw new SQLException("Inserting todo item failed, no rows affected.");
         }
 
-        return generatedId;
+        try (ResultSet resultSet = statement.getGeneratedKeys()) {
+            if (resultSet.next()) {
+                generatedId = resultSet.getLong(1);
+                item.setId(generatedId); // Set the generated ID to the ToDoItem
+            } else {
+                throw new SQLException("Inserting todo item failed, no ID obtained.");
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        closeResources(null, null, null);
     }
+
+    return generatedId;
+}
 
     public static void deleteToDoItem(ToDoItem item) {
         try (Connection conn = getConnection();
