@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 import main.todolist.model.ToDoItem;
 import main.todolist.DButils.DButils;
 
+import java.time.LocalDate;
+
 public class ToDoDetailController {
 
     private ToDoItem toDoItem;
@@ -25,6 +27,24 @@ public class ToDoDetailController {
 
     @FXML
     private TextField field_toDoName;
+
+    public void initialize() {
+        date_from.setDayCellFactory(datePicker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(date.isBefore(LocalDate.now()));
+            }
+        });
+
+        date_to.setDayCellFactory(datePicker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(date.isBefore(LocalDate.now()));
+            }
+        });
+    }
 
     public void initialize(ToDoItem item) {
         toDoItem = item;

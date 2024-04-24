@@ -55,4 +55,22 @@ public class AddToDoController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
+    public void initialize() {
+        from_datePicker.setDayCellFactory(datePicker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(date.isBefore(LocalDate.now()));
+            }
+        });
+
+        to_datePicker.setDayCellFactory(datePicker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(date.isBefore(LocalDate.now()));
+            }
+        });
+    }
 }
