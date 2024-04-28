@@ -28,9 +28,6 @@ public class AddToDoController {
 
     @FXML
     private DatePicker to_datePicker;
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
     @FXML
     void addToDo(ActionEvent event) {
         String name = field_TDname.getText();

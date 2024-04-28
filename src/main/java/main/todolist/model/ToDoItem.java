@@ -59,11 +59,4 @@ public class ToDoItem {
     public boolean isCompleted() {
         return completed.get();
     }
-
-//    public BooleanProperty completedProperty() {
-//        return completed;
-//    }
-//    public void setCompleted(boolean completed) {
-//        this.completed.set(completed);
-//    }
 }
