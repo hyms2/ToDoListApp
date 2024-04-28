@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class AddToDoController {
     private MainController mainController;
     private ToDoItem newItem;
+    private int userId;
 
     @FXML
     private Button button_addToDo;
@@ -27,7 +28,9 @@ public class AddToDoController {
 
     @FXML
     private DatePicker to_datePicker;
-
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
     @FXML
     void addToDo(ActionEvent event) {
         String name = field_TDname.getText();
@@ -42,10 +45,18 @@ public class AddToDoController {
             alert.setContentText("Please fill in all the fields.");
             alert.showAndWait();
         } else {
-            ToDoItem newItem = new ToDoItem(name, description, dateFrom, dateTo);
-            DButils.insertToDoItem(newItem);
-            mainController.receiveToDoItem(newItem);
-            ((Stage) button_addToDo.getScene().getWindow()).close();
+            if (userId != -1) {
+                ToDoItem newItem = new ToDoItem(name, description, dateFrom, dateTo, userId);
+                DButils.insertToDoItem(newItem);
+                mainController.receiveToDoItem(newItem);
+                ((Stage) button_addToDo.getScene().getWindow()).close();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("User ID Not Set");
+                alert.setContentText("User ID is not set. Please log in again.");
+                alert.showAndWait();
+            }
         }
     }
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.todolist.login.SignUpController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="177.0" layoutY="70.0" text="Create an Account">
+            <font>
+                <Font name="Monospaced Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="138.0" layoutY="160.0" text="Username">
+            <font>
+                <Font name="Monospaced Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="138.0" layoutY="216.0" text="Password">
+            <font>
+                <Font name="Monospaced Bold" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="field_username" layoutX="289.0" layoutY="157.0" promptText="Enter your username">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <PasswordField fx:id="field_password" layoutX="289.0" layoutY="213.0" promptText="Enter your password">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </PasswordField>
+        <Button fx:id="button_signup" layoutX="250.0" layoutY="294.0" mnemonicParsing="false" onAction="#pressSignUp" style="-fx-background-color: #4287f5; -fx-cursor: hand;" text="SIGN UP" textFill="WHITE">
+            <font>
+                <Font name="Monospaced Bold" size="18.0" />
+            </font>
+        </Button>
+        <Label fx:id="label_error" layoutX="207.0" layoutY="259.0" textFill="RED">
+            <font>
+                <Font name="Monospaced Regular" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="184.0" layoutY="351.0" text="Already have account?">
+            <font>
+                <Font name="Monospaced Bold" size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="button_login" layoutX="355.0" layoutY="346.0" mnemonicParsing="false" onAction="#pressLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Login" textFill="#002bff">
+            <font>
+                <Font name="Monospaced Bold" size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

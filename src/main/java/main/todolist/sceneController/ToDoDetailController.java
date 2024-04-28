@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import main.todolist.MainController;
 import main.todolist.model.ToDoItem;
 import main.todolist.DButils.DButils;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 public class ToDoDetailController {
 
     private ToDoItem toDoItem;
+    private MainController mainController;
 
     @FXML
     private Button button_save;
@@ -48,7 +50,6 @@ public class ToDoDetailController {
 
     public void initialize(ToDoItem item) {
         toDoItem = item;
-        // Populate fields with ToDoItem details
         field_toDoName.setText(item.getName());
         field_toDoDesc.setText(item.getDescription());
         date_from.setValue(item.getDateFrom());
@@ -63,7 +64,13 @@ public class ToDoDetailController {
         toDoItem.setDateTo(date_to.getValue());
         DButils.updateToDoItem(toDoItem);
 
+        mainController.refreshToDoList();
+
         Stage stage = (Stage) button_save.getScene().getWindow();
         stage.close();
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

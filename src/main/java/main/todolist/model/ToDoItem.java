@@ -5,36 +5,25 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class ToDoItem {
-    private Long id; // Add an id field
+    private Integer id;
     private String name;
     private String description;
     private LocalDate dateFrom;
     private LocalDate dateTo;
     private BooleanProperty completed;
+    private Integer userId;
 
-    public ToDoItem(String name, String description, LocalDate dateFrom, LocalDate dateTo) {
+    public ToDoItem(String name, String description, LocalDate dateFrom, LocalDate dateTo, Integer userId) {
         this.name = name;
         this.description = description;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.completed = new SimpleBooleanProperty(false);
+        this.userId = userId;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public boolean isCompleted() {
-        return completed.get();
-    }
-    public BooleanProperty completedProperty() {
-        return completed;
-    }
-    public void setCompleted(boolean completed) {
-        this.completed.set(completed);
     }
     public String getName() {
         return name;
@@ -48,6 +37,9 @@ public class ToDoItem {
     public LocalDate getDateTo() {
         return dateTo;
     }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -60,4 +52,18 @@ public class ToDoItem {
     public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
     }
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public boolean isCompleted() {
+        return completed.get();
+    }
+
+//    public BooleanProperty completedProperty() {
+//        return completed;
+//    }
+//    public void setCompleted(boolean completed) {
+//        this.completed.set(completed);
+//    }
 }

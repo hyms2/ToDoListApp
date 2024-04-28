@@ -11,4 +11,6 @@ module main.todolist {
     exports main.todolist;
     exports main.todolist.sceneController;
     opens main.todolist.sceneController to javafx.fxml;
+    exports main.todolist.login;
+    opens main.todolist.login to javafx.fxml;
 }

@@ -10,7 +10,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.todolist.DButils.DButils;
 import main.todolist.model.ToDoItem;
+
 import java.time.format.DateTimeFormatter;
+
 import javafx.util.Callback;
 import main.todolist.sceneController.AddToDoController;
 import main.todolist.sceneController.ToDoDetailController;
@@ -19,7 +21,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class MainController {
-
     @FXML
     private Button button_addToDo;
 
@@ -34,6 +35,9 @@ public class MainController {
 
     @FXML
     private Button button_detailToDo;
+
+    @FXML
+    private Button button_logout;
 
     @FXML
     private ListView<ToDoItem> listview_TDCompleted;
@@ -68,7 +72,6 @@ public class MainController {
 
     @FXML
     void openToDoDetail(ActionEvent event) {
-        // Get the selected ToDoItem
         ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
@@ -76,8 +79,8 @@ public class MainController {
                 Parent root = (Parent) fxmlLoader.load();
 
                 ToDoDetailController detailController = fxmlLoader.getController();
-
                 detailController.initialize(selectedItem);
+                detailController.setMainController(this);
 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
@@ -115,7 +118,18 @@ public class MainController {
         }
     }
 
+    @FXML
+    void pressLogout(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
+        Parent root = fxmlLoader.load();
 
+        Stage oldStage = (Stage) button_logout.getScene().getWindow();
+        oldStage.close();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
     public void initialize() {
         List<ToDoItem> ongoingToDoItems = DButils.getIncompleteToDoItems();
@@ -172,7 +186,6 @@ public class MainController {
                             checkBox.setSelected(true);
                             checkBox.setOnAction(event -> {
                                 if (!checkBox.isSelected()) {
-                                    // Move the item to the ongoing tab
                                     listview_ToDoList.getItems().add(item);
                                     DButils.completeStatus(item.getId(), 0);
                                     listview_TDCompleted.getItems().remove(item);
@@ -183,5 +196,9 @@ public class MainController {
                 };
             }
         });
+    }
+    public void refreshToDoList() {
+        listview_ToDoList.getItems().clear();
+        listview_ToDoList.getItems().addAll(DButils.getIncompleteToDoItems());
     }
 }

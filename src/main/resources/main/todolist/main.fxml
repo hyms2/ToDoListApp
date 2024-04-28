@@ -9,57 +9,67 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.todolist.MainController">
-   <children>
-      <TabPane layoutX="-1.0" prefHeight="400.0" prefWidth="485.0" style="-fx-background-color: #c9c9c9;" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab fx:id="tab_ongoing" closable="false" text="Ongoing">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
-                     <children>
-                        <ListView fx:id="listview_ToDoList" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
-                        <Label layoutX="23.0" layoutY="23.0" text="To Do List">
-                           <font>
-                              <Font name="Monospaced Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="button_addToDo" layoutX="367.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoBuilder" style="-fx-background-color: #4287f5;" text="+" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="button_detailToDo" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" style="-fx-background-color: #4287f5;" text=":" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="button_removeToDo1" layoutX="404.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="tab_completed" closable="false" text="Completed">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
-                     <children>
-                        <ListView fx:id="listview_TDCompleted" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
-                        <Label layoutX="23.0" layoutY="23.0" text="To Do List">
-                           <font>
-                              <Font name="Monospaced Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="button_removeToDo" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+    <children>
+        <TabPane layoutX="-1.0" prefHeight="400.0" prefWidth="485.0" style="-fx-background-color: #c9c9c9;" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="tab_ongoing" closable="false" text="Ongoing">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
+                            <children>
+                                <ListView fx:id="listview_ToDoList" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
+                                <Label layoutX="23.0" layoutY="23.0" text="To Do List">
+                                    <font>
+                                        <Font name="Monospaced Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="button_addToDo" layoutX="362.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoBuilder" style="-fx-background-color: #4287f5;" text="+" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="button_detailToDo" layoutX="438.0" layoutY="22.0" mnemonicParsing="false" onAction="#openToDoDetail" style="-fx-background-color: #4287f5;" text=":" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="button_removeToDo1" layoutX="402.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="button_logout" layoutX="285.0" layoutY="25.0" mnemonicParsing="false" onAction="#pressLogout" style="-fx-background-color: #4287f5;" text="LOG OUT" textFill="WHITE">
+                                    <font>
+                                        <Font name="Monospaced Bold" size="12.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tab_completed" closable="false" text="Completed">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
+                            <children>
+                                <ListView fx:id="listview_TDCompleted" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
+                                <Label layoutX="23.0" layoutY="23.0" text="To Do List">
+                                    <font>
+                                        <Font name="Monospaced Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="button_removeToDo" layoutX="436.0" layoutY="22.0" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-background-color: #4287f5;" text="-" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="button_logout1" layoutX="359.0" layoutY="25.0" mnemonicParsing="false" onAction="#pressLogout" style="-fx-background-color: #4287f5;" text="LOG OUT" textFill="WHITE">
+                                    <font>
+                                        <Font name="Monospaced Bold" size="12.0" />
+                                    </font>
+                                </Button>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>
