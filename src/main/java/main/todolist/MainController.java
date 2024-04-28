@@ -14,6 +14,7 @@ import main.todolist.model.ToDoItem;
 import java.time.format.DateTimeFormatter;
 
 import javafx.util.Callback;
+import main.todolist.model.UserInfo;
 import main.todolist.sceneController.AddToDoController;
 import main.todolist.sceneController.ToDoDetailController;
 
@@ -23,25 +24,18 @@ import java.util.List;
 public class MainController {
     @FXML
     private Button button_addToDo;
-
     @FXML
     private ListView<ToDoItem> listview_ToDoList;
-
     @FXML
     private Tab tab_completed;
-
     @FXML
     private Tab tab_ongoing;
-
     @FXML
     private Button button_detailToDo;
-
     @FXML
     private Button button_logout;
-
     @FXML
     private ListView<ToDoItem> listview_TDCompleted;
-
     @FXML
     void openToDoBuilder(ActionEvent event) {
         try {

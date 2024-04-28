@@ -13,19 +13,14 @@ public class AddToDoController {
     private MainController mainController;
     private ToDoItem newItem;
     private int userId;
-
     @FXML
     private Button button_addToDo;
-
     @FXML
     private TextArea field_TDDescription;
-
     @FXML
     private TextField field_TDname;
-
     @FXML
     private DatePicker from_datePicker;
-
     @FXML
     private DatePicker to_datePicker;
     @FXML

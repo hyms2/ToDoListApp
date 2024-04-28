@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.todolist.DButils.DButils;
 import main.todolist.Main;
+import main.todolist.MainController;
 import main.todolist.model.UserInfo;
 
 import java.io.IOException;
@@ -19,19 +20,14 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     public Button button_login;
-
     @FXML
     private Button button_signup;
-
     @FXML
     private PasswordField field_password;
-
     @FXML
     private TextField field_username;
-
     @FXML
     public Label label_error;
-
     @FXML
     void pressLogin(ActionEvent event) {
         String username = field_username.getText().trim();

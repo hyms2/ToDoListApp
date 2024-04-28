@@ -14,19 +14,14 @@ public class ToDoDetailController {
 
     private ToDoItem toDoItem;
     private MainController mainController;
-
     @FXML
     private Button button_save;
-
     @FXML
     private DatePicker date_from;
-
     @FXML
     private DatePicker date_to;
-
     @FXML
     private TextArea field_toDoDesc;
-
     @FXML
     private TextField field_toDoName;
 

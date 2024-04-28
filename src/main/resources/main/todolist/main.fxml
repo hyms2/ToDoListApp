@@ -17,7 +17,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
                             <children>
                                 <ListView fx:id="listview_ToDoList" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
-                                <Label layoutX="23.0" layoutY="23.0" text="To Do List">
+                                <Label layoutX="23.0" layoutY="25.0" text="To Do List">
                                     <font>
                                         <Font name="Monospaced Bold" size="18.0" />
                                     </font>
@@ -51,7 +51,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d7d7d9;">
                             <children>
                                 <ListView fx:id="listview_TDCompleted" layoutX="23.0" layoutY="65.0" prefHeight="283.0" prefWidth="438.0" />
-                                <Label layoutX="23.0" layoutY="23.0" text="To Do List">
+                                <Label layoutX="23.0" layoutY="25.0" text="To Do List">
                                     <font>
                                         <Font name="Monospaced Bold" size="18.0" />
                                     </font>

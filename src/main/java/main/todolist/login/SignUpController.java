@@ -18,19 +18,14 @@ import java.io.IOException;
 public class SignUpController {
     @FXML
     public Button button_login;
-
     @FXML
     private Button button_signup;
-
     @FXML
     private PasswordField field_password;
-
     @FXML
     private TextField field_username;
-
     @FXML
     private Label label_error;
-
     @FXML
     void pressSignUp(ActionEvent event) {
         String username = field_username.getText().trim();
