@@ -241,7 +241,6 @@ public class DButils {
 
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("login.fxml"));
             Parent root = loader.load();
-
             LoginController loginController1 =loader.getController();
 
             if (!resultSet.next()) {
@@ -256,12 +255,13 @@ public class DButils {
 
 
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main2.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
                     Parent root1 = fxmlLoader.load();
+                    root1.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
                     loginStage.close();
-
                     Stage stage = new Stage();
+                    stage.setTitle("To Do List");
                     stage.setScene(new Scene(root1));
                     stage.show();
                 } else {

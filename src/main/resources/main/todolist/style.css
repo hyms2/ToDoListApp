@@ -1,0 +1,66 @@
+.button {
+    -fx-background-color:  #26a6c9;
+}
+
+.button:hover {
+    -fx-background-color: #1f7d9f;
+}
+
+.button:pressed {
+    -fx-background-color: #41b0d9;
+}
+
+#logout_button {
+    -fx-background-color:  #FBEFE5;
+    -fx-text-fill: #1e8dae;
+}
+
+#logout_button:hover {
+    -fx-background-color: #9f9c9b;
+    -fx-text-fill: white;
+}
+
+#logout_button:pressed {
+    -fx-background-color: #FBEFE5;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 90px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab {
+    -fx-background-insets: 0 0 0 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #26a6c9;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #2f82a1;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #fbefe5;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.list-cell {
+    -fx-text-fill: black;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color:  #b4e9f1;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #1e81b0;
+    -fx-text-fill: white;
+}

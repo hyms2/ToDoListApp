@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.todolist.login.SignUpController"
-            prefHeight="400.0" prefWidth="600.0">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.todolist.login.SignUpController">
     <children>
-        <Label layoutX="177.0" layoutY="70.0" text="Create an Account">
+        <Label layoutX="190.0" layoutY="68.0" text="Create an Account">
             <font>
-                <Font name="Monospaced Bold" size="24.0" />
+                <Font name="Tahoma Bold" size="24.0" />
             </font>
         </Label>
-        <Label layoutX="138.0" layoutY="160.0" text="Username">
+        <Label layoutX="144.0" layoutY="160.0" text="Username">
             <font>
-                <Font name="Monospaced Bold" size="18.0" />
+                <Font name="Tahoma" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="138.0" layoutY="216.0" text="Password">
+        <Label layoutX="146.0" layoutY="216.0" text="Password">
             <font>
-                <Font name="Monospaced Bold" size="18.0" />
+                <Font name="Tahoma" size="18.0" />
             </font>
         </Label>
-        <TextField fx:id="field_username" layoutX="289.0" layoutY="157.0" promptText="Enter your username">
+        <TextField fx:id="field_username" layoutX="283.0" layoutY="157.0" promptText="Enter your username">
             <font>
                 <Font size="14.0" />
             </font>
         </TextField>
-        <PasswordField fx:id="field_password" layoutX="289.0" layoutY="213.0" promptText="Enter your password">
+        <PasswordField fx:id="field_password" layoutX="283.0" layoutY="213.0" promptText="Enter your password">
             <font>
                 <Font size="14.0" />
             </font>
         </PasswordField>
-        <Button fx:id="button_signup" layoutX="250.0" layoutY="294.0" mnemonicParsing="false" onAction="#pressSignUp" style="-fx-background-color: #4287f5; -fx-cursor: hand;" text="SIGN UP" textFill="WHITE">
+        <Button fx:id="button_signup" layoutX="254.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressSignUp" style="-fx-cursor: hand;" stylesheets="@style.css" text="SIGN UP" textFill="WHITE">
             <font>
-                <Font name="Monospaced Bold" size="18.0" />
+                <Font name="Tahoma" size="18.0" />
             </font>
         </Button>
         <Label fx:id="label_error" layoutX="207.0" layoutY="259.0" textFill="RED">
@@ -47,14 +44,14 @@
                 <Font name="Monospaced Regular" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="184.0" layoutY="351.0" text="Already have account?">
+        <Label layoutX="208.0" layoutY="349.0" text="Already have account?">
             <font>
-                <Font name="Monospaced Bold" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="button_login" layoutX="355.0" layoutY="346.0" mnemonicParsing="false" onAction="#pressLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Login" textFill="#002bff">
+        <Button fx:id="button_login" layoutX="340.0" layoutY="344.0" mnemonicParsing="false" onAction="#pressLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Login" textFill="#002bff">
             <font>
-                <Font name="Monospaced Bold" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
         </Button>
     </children>

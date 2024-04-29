@@ -46,6 +46,7 @@ public class MainController {
             addToDoController.setMainController(this);
 
             Stage stage = new Stage();
+            stage.setTitle("Add New Quest");
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -77,6 +78,7 @@ public class MainController {
                 detailController.setMainController(this);
 
                 Stage stage = new Stage();
+                stage.setTitle("Quest Detail");
                 stage.setScene(new Scene(root));
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.showAndWait();
@@ -121,6 +123,7 @@ public class MainController {
         oldStage.close();
 
         Stage stage = new Stage();
+        stage.setTitle("Login");
         stage.setScene(new Scene(root));
         stage.show();
     }
