@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.todolist.DButils.DButils;
 import main.todolist.Main;
-import main.todolist.MainController;
 import main.todolist.model.UserInfo;
 
 import java.io.IOException;

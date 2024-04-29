@@ -207,7 +207,6 @@ public class DButils {
                 alert.setHeaderText("USERNAME ALREADY TAKEN!");
                 alert.setContentText("Try insert another username.");
                 alert.show();
-//                signUpController.usernameTaken();
             } else {
                 psInsert = connection.prepareStatement("INSERT INTO users(username, password) VALUES (?, ?)");
                 psInsert.setString(1, username);
@@ -250,7 +249,6 @@ public class DButils {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Username or password is wrong");
                 alert.show();
-//                loginController1.label_error.setText("Username or password is incorrect!");
             } else {
                 String fetchPassword = resultSet.getString("password");
                 if (fetchPassword.equals(password)) {
@@ -258,7 +256,7 @@ public class DButils {
 
 
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main2.fxml"));
                     Parent root1 = fxmlLoader.load();
 
                     loginStage.close();
