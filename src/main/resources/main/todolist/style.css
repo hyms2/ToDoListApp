@@ -33,12 +33,10 @@
     -fx-tab-min-height: 40px;
 }
 
-.tab {
-    -fx-background-insets: -1 -1 -1 -1;
-}
-
 .tab-pane .tab {
     -fx-background-color: #26a6c9;
+    -fx-background-insets: -1 -1 -1 -1;
+
 }
 
 .tab-pane .tab:selected {
