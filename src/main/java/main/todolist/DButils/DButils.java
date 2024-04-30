@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 public class DButils {
     private static final String URL = "jdbc:mysql://localhost:3306/todolistdb";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "hazim1234";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "passoword";
 
 
     private static Connection getConnection() throws SQLException {
