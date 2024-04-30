@@ -7,8 +7,8 @@ module main.todolist {
     requires net.synedra.validatorfx;
     requires java.sql;
 
-    opens main.todolist to javafx.fxml;
     exports main.todolist;
+    opens main.todolist to javafx.fxml;
     exports main.todolist.sceneController;
     opens main.todolist.sceneController to javafx.fxml;
     exports main.todolist.login;

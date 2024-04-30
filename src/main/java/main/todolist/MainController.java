@@ -16,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import javafx.util.Callback;
 import main.todolist.model.UserInfo;
 import main.todolist.sceneController.AddToDoController;
+import main.todolist.sceneController.TDDCompletedController;
 import main.todolist.sceneController.ToDoDetailController;
 
 import java.io.IOException;
@@ -25,15 +26,18 @@ public class MainController {
     @FXML
     private Button button_addToDo;
     @FXML
+    private Label label_username;
+    @FXML
     private ListView<ToDoItem> listview_ToDoList;
     @FXML
-    private Tab tab_completed;
+    public Tab tab_completed;
     @FXML
-    private Tab tab_ongoing;
+    public Tab tab_ongoing;
     @FXML
     private Button button_detailToDo;
     @FXML
     private Button button_logout;
+
     @FXML
     private ListView<ToDoItem> listview_TDCompleted;
     @FXML
@@ -67,24 +71,48 @@ public class MainController {
 
     @FXML
     void openToDoDetail(ActionEvent event) {
-        ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toDoDetail.fxml"));
-                Parent root = (Parent) fxmlLoader.load();
+        Tab selectedTab = tab_ongoing.isSelected() ? tab_ongoing : tab_completed;
+        if (selectedTab == tab_ongoing) {
+            ToDoItem selectedItem = listview_ToDoList.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toDoDetail.fxml"));
+                    Parent root = (Parent) fxmlLoader.load();
 
-                ToDoDetailController detailController = fxmlLoader.getController();
-                detailController.initialize(selectedItem);
-                detailController.setMainController(this);
+                    ToDoDetailController detailController = fxmlLoader.getController();
+                    detailController.initialize(selectedItem);
+                    detailController.setMainController(this);
 
-                Stage stage = new Stage();
-                stage.setTitle("Quest Detail");
-                stage.setScene(new Scene(root));
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.showAndWait();
+                    Stage stage = new Stage();
+                    stage.setTitle("Quest Detail");
+                    stage.setScene(new Scene(root));
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.showAndWait();
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (selectedTab == tab_completed) {
+            ToDoItem selectedItem = listview_TDCompleted.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toDoDetailCompleted.fxml"));
+                    Parent root = (Parent) fxmlLoader.load();
+
+                    TDDCompletedController detailController = fxmlLoader.getController();
+                    detailController.initialize(selectedItem);
+                    detailController.setMainController(this);
+
+                    Stage stage = new Stage();
+                    stage.setTitle("Detail Completed");
+                    stage.setScene(new Scene(root));
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.showAndWait();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -129,6 +157,7 @@ public class MainController {
     }
 
     public void initialize() {
+        label_username.setText(loggedInUsername());
         List<ToDoItem> ongoingToDoItems = DButils.getIncompleteToDoItems();
         List<ToDoItem> completeToDoItems = DButils.getCompleteToDoItems();
         listview_ToDoList.getItems().addAll(ongoingToDoItems);
@@ -197,5 +226,9 @@ public class MainController {
     public void refreshToDoList() {
         listview_ToDoList.getItems().clear();
         listview_ToDoList.getItems().addAll(DButils.getIncompleteToDoItems());
+    }
+    public static String loggedInUsername(){
+        String username = UserInfo.getUsername();
+        return username;
     }
 }

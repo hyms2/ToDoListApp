@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -19,29 +21,38 @@
          <left>
             <VBox prefHeight="415.0" prefWidth="186.0" style="-fx-background-color: #51C0E2;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="button_addToDo" mnemonicParsing="false" onAction="#openToDoBuilder" prefHeight="49.0" prefWidth="219.0" style="-fx-cursor: hand;" stylesheets="@style.css" text="ADD" textFill="#fbefe5">
+                  <Button fx:id="button_addToDo" mnemonicParsing="false" onAction="#openToDoBuilder" style="-fx-cursor: hand;" stylesheets="@style.css" text="ADD" textFill="#fbefe5">
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS_SQUARE" />
+                     </graphic>
                   </Button>
-                  <Button fx:id="button_removeToDo1" mnemonicParsing="false" onAction="#removeToDoBuilder" prefHeight="49.0" prefWidth="219.0" style="-fx-cursor: hand;" stylesheets="@style.css" text="DELETE" textFill="#fbefe5">
+                  <Button fx:id="button_removeToDo" mnemonicParsing="false" onAction="#removeToDoBuilder" style="-fx-cursor: hand;" stylesheets="@style.css" text="DELETE" textFill="#fbefe5">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="REMOVE" />
+                     </graphic>
                   </Button>
-                  <Button fx:id="button_detailToDo" mnemonicParsing="false" onAction="#openToDoDetail" prefHeight="49.0" prefWidth="219.0" style="-fx-cursor: hand;" stylesheets="@style.css" text="DETAIL" textFill="#fbefe5">
+                  <Button fx:id="button_detailToDo" mnemonicParsing="false" onAction="#openToDoDetail" style="-fx-cursor: hand;" stylesheets="@style.css" text="DETAIL" textFill="#fbefe5">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="LIST_UL" />
+                     </graphic>
                   </Button>
                   <Line endX="65.0" startX="-100.0" stroke="#26a6c9" strokeWidth="2.0">
                      <VBox.margin>
@@ -52,23 +63,37 @@
             </VBox>
          </left>
          <top>
-            <HBox alignment="TOP_RIGHT" prefHeight="66.0" prefWidth="720.0" style="-fx-background-color: #1E8DAE;" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="720.0" spacing="400.0" style="-fx-background-color: #1E8DAE;" BorderPane.alignment="CENTER">
                <children>
+                  <Label fx:id="label_username" text="username" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" />
+                     </graphic>
+                  </Label>
                   <Text fill="#fbefe5" strokeType="OUTSIDE" strokeWidth="0.0" text="M-DAILY QUEST">
                      <HBox.margin>
-                        <Insets right="438.0" top="22.0" />
+                        <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="Tahoma" size="18.0" />
                      </font>
                   </Text>
-                  <Button id="logout_button" fx:id="button_logout" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressLogout" prefHeight="29.0" prefWidth="82.0" style="-fx-cursor: hand;" stylesheets="@style.css" text="Log Out" textFill="#1e8dae">
+                  <Button id="logout_button" fx:id="button_logout" alignment="CENTER" mnemonicParsing="false" onAction="#pressLogout" prefHeight="30.0" prefWidth="117.0" style="-fx-cursor: hand;" stylesheets="@style.css" text="Log Out" textFill="#1e8dae">
                      <HBox.margin>
-                        <Insets right="40.0" top="18.0" />
+                        <Insets right="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="SIGN_OUT" />
+                     </graphic>
                   </Button>
                </children>
             </HBox>
@@ -84,6 +109,9 @@
                            </children>
                         </AnchorPane>
                   </content>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="TASKS" />
+                     </graphic>
                 </Tab>
                 <Tab fx:id="tab_completed" text="Completed">
                   <content>
@@ -93,6 +121,9 @@
                            </children>
                         </AnchorPane>
                   </content>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CHECK_SQUARE" />
+                     </graphic>
                 </Tab>
               </tabs>
             </TabPane>
