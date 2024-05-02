@@ -92,8 +92,14 @@ public class MainController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No ToDoItem Selected");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select a to do list to view details.");
+                alert.showAndWait();
             }
-        } else if (selectedTab == tab_completed) {
+        } else {
             ToDoItem selectedItem = listview_TDCompleted.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 try {
@@ -101,7 +107,7 @@ public class MainController {
                     Parent root = (Parent) fxmlLoader.load();
 
                     TDDCompletedController detailController = fxmlLoader.getController();
-                    detailController.initialize(selectedItem);
+                        detailController.initialize(selectedItem);
                     detailController.setMainController(this);
 
                     Stage stage = new Stage();
@@ -113,13 +119,13 @@ public class MainController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No ToDoItem Selected");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select a to do list to view details.");
+                alert.showAndWait();
             }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No ToDoItem Selected");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a ToDoItem to view details.");
-            alert.showAndWait();
         }
     }
 
